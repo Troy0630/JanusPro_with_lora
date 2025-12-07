@@ -1,14 +1,40 @@
-train-lora.py：lora微调janus。
+# 目录
+
+.
+|-- src
+|   |`-- Janus
+| |-- train.py
+| |-- app.py
+|-- scripts
+|   `   |-- run.sh
+|-- model.png
+|-- dataset
+|   |-- OpenI-ZH.json
+| -- readme.md
+
+train-lora.py：lora微调Janus-Pro；
+
+Open-ZH.json: 数据集标签；
 
 app.py:使用模型的推理界面。
 
-![structure](structure.png)
+# 模型
 
-# 用法：
+lora微调Janus-Pro模型架构图如下：
+
+![model](model.png)
+
+# 快速开始：
+
+```bash
+bash run.sh
+```
 
 ## 训练：
 
-python **/home/aistudio/Janus-main/train-lora.py** **--json_path** /home/aistudio/Janus-main/open.json **--image_dir** /home/aistudio/fine/image --pretrained_model /home/aistudio/JanusPro1B --output_dir /home/aistudio/Janus-main/output-lora --batch_size 8 --max_epochs 3
+```python
+python /home/aistudio/Janus-main/train-lora.py --json_path/home/aistudio/Janus-main/open.json --image_dir /home/aistudio/Janus-main/image --pretrained_model /home/aistudio/JanusPro1B --output_dir /home/aistudio/Janus-main/output-lora --batch_size 8 --max_epochs 10
+```
 
 --**json_path** 为json路径
 
@@ -18,4 +44,7 @@ python **/home/aistudio/Janus-main/train-lora.py** **--json_path** /home/aistudi
 
 ## 推理：
 
-python /home/aistudio/Janus-main/app.py --model_path /home/aistudio/JanusPro1B --lora_path1 /home/aistudio/Janus-main/output-loratest --lora_path2 /home/aistudio/Janus-main/output-lorafine
+```python
+python /home/aistudio/Janus-main/app.py --model_path /home/aistudio/JanusPro1B --lora_path /home/aistudio/Janus-main/output-loratest 
+```
+
